@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 import pytesseract
 import re
-#from skimage import morphology
 camera_port=0
 cap =  cv2.VideoCapture(0)
 pytesseract.pytesseract.tesseract_cmd = r'C:\\Users\\LENOVO\\Desktop\\Tesseract-OCR\\tesseract.exe'
@@ -22,13 +21,13 @@ while(1):
     hsv = cv2.dilate(hsv, kernel, iterations=1)
     hsv = cv2.erode(hsv, kernel, iterations=1)
 
-    # define range of white color in HSV
-    # change it according to your need !
+    
+    
     sensitivity = 15
     lower_white = np.array([0,0,255-sensitivity], dtype=np.uint8)
     upper_white = np.array([255,sensitivity,255], dtype=np.uint8)
 
-    # Threshold the HSV image to get only white colors
+    
     mask = cv2.inRange(hsv, lower_white, upper_white)
 
     i=i + 1
